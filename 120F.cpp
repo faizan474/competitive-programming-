@@ -58,6 +58,8 @@ return mx;
  
 int main(){
     ll t=1;
+    freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
 cin>>t;
 ll ans=0;
     while(t--){
