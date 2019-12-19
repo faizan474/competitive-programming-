@@ -82,6 +82,9 @@ fr(i,1,n+1){
     }
 }
 ll l=1,r=1,ans=0;
+//concept used is choose end point of path which is longest i.e
+//let be l,r;if w is added we have to find only dis(l,r),dis(l,w),dis(w,r)
+// maximum among them :)
 for(int i=2;i<=n;i++){
     ll dis1=dis(i,l);
     ll dis2=dis(i,r);
