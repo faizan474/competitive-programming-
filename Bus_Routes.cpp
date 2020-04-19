@@ -10,7 +10,7 @@ typedef long long int ll;
 
 #define fr(i,l,r) for(ll i=l;i<r;i++)
 #define mems(a,x) memset(a,x,sizeof(a))
-#define mod 1000000000
+#define mod 1000000007
 #define ff first
 #define ss second
 #define pb(x) push_back(x)
@@ -18,54 +18,25 @@ typedef long long int ll;
 #define pbp(x,y) push_back(make_pair(x,y))
 #define  mat vector<vector<ll>>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-ll H=0,W=0;
-  pair<ll,ll> decodeString(const string& s, ll& i) {
-      ll gg=0;
-      pair<ll,ll>pi={gg,gg};
-        while (i < s.length() && s[i] != ')') {
-            if (!isdigit(s[i])){
-                 if(s[i]=='E')
-                 pi.ss++;
-                 else if(s[i]=='W')
-                 pi.ss--;
-                 else if(s[i]=='N')
-                 pi.ff--;
-                 else pi.ff++; 
-                 i++;
-                }
-            else {
-                ll n = 0;
-                while (i < s.length() && isdigit(s[i]))
-                    n = n * 10 + s[i++] - '0';
-                n=n%mod;
-                i++; // '['
-                auto k=decodeString(s, i);
-                i++; // ']'
-                
-                    ll fff=pi.ff+n*k.ff%mod;
-                    fff=fff%mod;
-                    ll sss=pi.ss+n*k.ss%mod;
-                    sss=sss%mod;
-                    pi={fff,sss};
-            }
-    
-        }
-        pi={pi.ff%mod,pi.ss%mod};
-        return pi;
-    }
+
 void solve(){
-  ll r=1,c=1;
-  string str;
-  cin>>str;
-  ll i=0;
-  auto p=decodeString(str,i);
-  H=p.ff,W=p.ss;
-  r=r+(H+1000000000)%1000000000;
-  c=c+(W+1000000000)%1000000000;
-  cout<<c<<" "<<r;
-
-
+  ll n,d;
+  cin>>n>>d;
+  ll c=0;
+  vll v(n);
+  fr(i,0,n)
+  cin>>v[i];
+  
+  ll ans=d;
+  for(int i=n-1;i>=0;i--){
+    if(ans%v[i]==0){
+      continue;  
+       }
+       else ans-=ans%v[i];
+    
+  }
+  
+  cout<<ans;
 }
 
 
